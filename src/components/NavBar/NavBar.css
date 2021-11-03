@@ -1,0 +1,27 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 0 8px;
+}
+
+.menu__link {
+  text-decoration: none;
+  margin-right: 24px;
+  color: #97979b;
+  font-weight: 500;
+  font-size: 1.3em;
+  line-height: 20px;
+}
+
+.menu__link_active {
+  color: #050510;
+  font-weight: 600;
+}
+
+.line {
+  border-bottom: 0.33px #c3c3c6 solid;
+}
