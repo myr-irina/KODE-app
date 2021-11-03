@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Search from "../Search/Search";
 import NavBar from "../NavBar/NavBar";
-import CardList from "../ResultList/CardList";
+import CardList from "../CardList/CardList";
 
 function App() {
   return (

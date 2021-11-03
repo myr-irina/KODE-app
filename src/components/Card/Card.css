@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.card__avatar {
+  display: block;
+  width: 72px;
+  height: 72px;
+}
+
+.card-block {
+  margin-left: 16px;
+}
+
+.card-block__name-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.card-block__name {
+  margin: 0 4px 0 0;
+  padding: 0;
+  line-height: 1.25;
+  font-size: 1.33em;
+  font-weight: 500;
+  color: #050510;
+}
+
+.card-block__nickname {
+  line-height: 1.29;
+  color: #97979b;
+  font-weight: 500;
+  font-size: 1.15em;
+  margin: 0;
+  padding: 0;
+}
+
+.card-block__role {
+  margin: 0;
+  padding: 0;
+  line-height: 1.23;
+  font-size: 1.08em;
+}
