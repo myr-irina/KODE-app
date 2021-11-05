@@ -1,18 +1,36 @@
 import React from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
-// import Main from "../Main/Main";
-// import Designers from "../Designers/Designers";
-// import Analysts from "../Analysts/Analysts";
-// import Managers from "../Managers/Mangers";
-// import iOS from "../iOS/iOS";
-// import Android from "../Android/Android";
 
-export default function NavBar() {
+export default function TopAppBar({ users }) {
+  const [active, setActive] = React.useState(null);
+
+  const tabs = [
+    { title: "Все" },
+    { title: "Designers" },
+    { title: "Analysts" },
+    { title: "Managers" },
+    { title: "iOS" },
+    { title: "android" },
+  ];
+
+  const openTab = (e) => setActive(e.target.dataset.i);
+
   return (
     <section className="navbar">
       <ul className="menu page__content">
-        <li>
+        {tabs.map((n, i) => (
+          <button
+            key={i}
+            // className={`menu__link ${i === active ? "menu__link_active" : ""}`}
+            className="menu__link"
+            onClick={openTab}
+            data-index={i}
+          >
+            {n.title}
+          </button>
+        ))}
+        {/* <li>
           <NavLink
             exact
             to="/"
@@ -66,7 +84,7 @@ export default function NavBar() {
           >
             Android
           </NavLink>
-        </li>
+        </li> */}
       </ul>
       <div className="line"></div>
     </section>

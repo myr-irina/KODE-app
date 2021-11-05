@@ -2,7 +2,15 @@ import React from "react";
 import "./Search.css";
 import SearchIcon from "./../../images/search.svg";
 
-export default function Search() {
+export default function Search({query, handleChange}) {
+  // const [query, setQuery] = React.useState("");
+
+  // function onChange(e) {
+  //   setQuery(e.target.value);
+  // }
+
+
+
   return (
     <section className="search">
       <article className="page__content">
@@ -11,8 +19,8 @@ export default function Search() {
           <img className="search__icon" src={SearchIcon} alt="иконка поиска" />
           <input
             className="search__input"
-            // value={searchTerm}
-            // onChange={onChange}
+            value={query}
+            onChange={handleChange}
             type="text"
             placeholder="Введи имя, тег, почту..."
             autoComplete="off"

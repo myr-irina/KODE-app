@@ -10,7 +10,7 @@ class Api {
   getUsers() {
     return fetch(`${this._url}`, {
       method: "GET",
-      headers: this._headers,
+      headers: this._headers, 
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -24,6 +24,7 @@ const api = new Api({
   url: API,
   headers: {
     "Content-Type": "application/json",
+    "Prefer": "code=200, example=success",
   },
 });
 
