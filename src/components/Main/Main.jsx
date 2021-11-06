@@ -6,27 +6,21 @@ import SortPopup from "../SortPopup/SortPopup";
 
 export default function Main({ isLoading, users, error }) {
   const [query, setQuery] = React.useState("");
-  const [department, setDepartment] = React.useState("");
-  const [sortingMethod, setSortingMethod] = React.useState([]);
+  const [department, setDepartment] = React.useState(null);
+  const [sortingMethod, setSortingMethod] = React.useState('byName');
   const [isVisible, setIsVisible] = React.useState(false);
+  
 
   function onChange(e) {
     setQuery(e.target.value);
   }
 
-  function filterDepartment(user) {
-    const tabs = [
-      { title: "Все" },
-      { title: "Designers" },
-      { title: "Analysts" },
-      { title: "Managers" },
-      { title: "iOS" },
-      { title: "android" },
-    ];
-    const deptArray = user.position.filter(
-      (user) => user.position === tabs.title
-    );
-    return setDepartment(deptArray);
+  function openPopup() {
+    setIsVisible(true);
+  }
+
+  function closePopup() {
+    setIsVisible(false);
   }
 
   // в состоянии будет:
@@ -35,12 +29,46 @@ export default function Main({ isLoading, users, error }) {
   // 3. выбранный режим сортировки (по умолчнанию сортировка по алфавиту)
   // 4. видим ли попап сортировки (false, true)
 
+  const filteredUsers = users
+    .filter((user) => {
+      if (department === null) {
+        return true;
+      } else if (department === user.department) {
+        return true;
+      }
+      return false;
+    })
+    .filter((user) => {
+      const queryLowercase = query.toLowerCase();
+
+      if (query === "") {
+        return true;
+      } else if (
+        user.firstName.toLowerCase().includes(queryLowercase) ||
+        user.lastName.toLowerCase().includes(queryLowercase) ||
+        user.position.toLowerCase().includes(queryLowercase) ||
+        user.userTag.toLowerCase().includes(queryLowercase)
+      ) {
+        return true;
+      }
+      return false;
+    });
+
   return (
     <section className="main">
-      <Search query={query} handleChange={onChange} />
-      <TopAppBar users={users} department={department} />
-      <UserList users={users} query={query} isLoading={isLoading} />
-      {isVisible && <SortPopup sortingMethod={sortingMethod} />}
+      <Search
+        query={query}
+        handleChange={onChange}
+        onPopupOpen={openPopup}
+        isVisible={isVisible}
+      />
+      <TopAppBar setDepartment={setDepartment} department={department} />
+      <UserList users={filteredUsers} isLoading={isLoading} isDateVisible={sortingMethod === 'byDate'} />
+      <SortPopup
+        isVisible={isVisible}
+        sortingMethod={sortingMethod}
+        onPopupClose={closePopup}
+      />
     </section>
   );
 }

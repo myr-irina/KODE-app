@@ -2,14 +2,17 @@ import React from "react";
 import "./Search.css";
 import SearchIcon from "./../../images/search.svg";
 
-export default function Search({query, handleChange}) {
+export default function Search({ query, handleChange, onPopupOpen, isVisisble }) {
   // const [query, setQuery] = React.useState("");
 
   // function onChange(e) {
   //   setQuery(e.target.value);
   // }
-
-
+  function handlePopupOpen(e) {
+    e.preventDefault();
+    console.log("клик");
+    onPopupOpen(isVisisble);
+  }
 
   return (
     <section className="search">
@@ -27,7 +30,11 @@ export default function Search({query, handleChange}) {
             minLength="2"
             maxLength="200"
           />
-          <button className="search__button" type="submit"></button>
+          <button
+            className="search__button"
+            type="submit"
+            onClick={handlePopupOpen}
+          ></button>
         </form>
       </article>
     </section>

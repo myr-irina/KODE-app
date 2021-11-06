@@ -16,6 +16,7 @@ export default function Card(props) {
           <p className="card-block__nickname">{props.user.userTag}</p>
         </div>
         <p className="card-block__role">{props.user.position}</p>
+        {/* props.isDateVisible */}
       </div>
     </section>
   );
