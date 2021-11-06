@@ -2,16 +2,16 @@ import React from "react";
 import "./Search.css";
 import SearchIcon from "./../../images/search.svg";
 
-export default function Search({ query, handleChange, onPopupOpen, isVisisble }) {
-  // const [query, setQuery] = React.useState("");
-
-  // function onChange(e) {
-  //   setQuery(e.target.value);
-  // }
+export default function Search({
+  query,
+  handleChange,
+  onPopupOpen,
+  isVisisble,
+  setIsVisible,
+}) {
   function handlePopupOpen(e) {
     e.preventDefault();
-    console.log("клик");
-    onPopupOpen(isVisisble);
+    setIsVisible(true);
   }
 
   return (

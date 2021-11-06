@@ -7,20 +7,11 @@ import SortPopup from "../SortPopup/SortPopup";
 export default function Main({ isLoading, users, error }) {
   const [query, setQuery] = React.useState("");
   const [department, setDepartment] = React.useState(null);
-  const [sortingMethod, setSortingMethod] = React.useState('byName');
+  const [sortingMethod, setSortingMethod] = React.useState("byName");
   const [isVisible, setIsVisible] = React.useState(false);
-  
 
   function onChange(e) {
     setQuery(e.target.value);
-  }
-
-  function openPopup() {
-    setIsVisible(true);
-  }
-
-  function closePopup() {
-    setIsVisible(false);
   }
 
   // в состоянии будет:
@@ -59,15 +50,19 @@ export default function Main({ isLoading, users, error }) {
       <Search
         query={query}
         handleChange={onChange}
-        onPopupOpen={openPopup}
         isVisible={isVisible}
+        setIsVisible={setIsVisible}
       />
       <TopAppBar setDepartment={setDepartment} department={department} />
-      <UserList users={filteredUsers} isLoading={isLoading} isDateVisible={sortingMethod === 'byDate'} />
+      <UserList
+        users={filteredUsers}
+        isLoading={isLoading}
+        isDateVisible={sortingMethod === "byDate"}
+      />
       <SortPopup
         isVisible={isVisible}
         sortingMethod={sortingMethod}
-        onPopupClose={closePopup}
+        setIsVisible={setIsVisible}
       />
     </section>
   );
