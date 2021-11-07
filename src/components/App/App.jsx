@@ -4,6 +4,7 @@ import api from "../../utils/Api";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState();
@@ -41,6 +42,10 @@ function App() {
 
           <Route>
             <UserCard user={currentUser} />
+          </Route>
+
+          <Route>
+            <Preloader path="/preloader" />
           </Route>
         </Switch>
       </div>

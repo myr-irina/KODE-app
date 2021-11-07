@@ -1,5 +1,4 @@
 import React from "react";
-import CloseBtn from "../../images/closeBtn.jpg";
 import "./SortPopup.css";
 
 export default function SortPopup({ isVisible, sortingMethod, setIsVisible }) {
@@ -20,7 +19,7 @@ export default function SortPopup({ isVisible, sortingMethod, setIsVisible }) {
               type="radio"
               name="choice"
               id="firstName"
-              value="firstName"
+              value="byName"
               className="radio-btn-block__btn"
             ></input>
             <label htmlFor="firstName" className="radio-btn-block__label">
@@ -33,7 +32,7 @@ export default function SortPopup({ isVisible, sortingMethod, setIsVisible }) {
               type="radio"
               name="choice"
               id="birthday"
-              value="birthday"
+              value="byDate"
               className="radio-btn-block__btn"
             ></input>
             <label htmlFor="birthday" className="radio-btn-block__label">

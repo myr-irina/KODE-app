@@ -9,16 +9,41 @@ export default function Main({ isLoading, users, error }) {
   const [department, setDepartment] = React.useState(null);
   const [sortingMethod, setSortingMethod] = React.useState("byName");
   const [isVisible, setIsVisible] = React.useState(false);
+  const [userNotFound, setUserNotFound] = React.useState(false);
 
   function onChange(e) {
     setQuery(e.target.value);
   }
 
-  // в состоянии будет:
-  // 1. введенный текст в строке поиска
-  // 2. выбранный department
-  // 3. выбранный режим сортировки (по умолчнанию сортировка по алфавиту)
-  // 4. видим ли попап сортировки (false, true)
+
+  // const usersFilteredByDept = (user) => {
+  //   if (department === null) {
+  //     return users;
+  //   } else if (department === user.department) {
+  //     users.filter((user) => {
+  //       return true;
+  //     });
+  //     return false;
+  //   }
+  // };
+
+  // const usersFilteredByDeptAndSearchQuery = () => {
+  //   const queryLowercase = query.toLowerCase();
+
+  //   if (query === "") {
+  //     return usersFilteredByDept;
+  //   } else if (
+  //     usersFilteredByDept.firstName.toLowerCase().includes(queryLowercase) ||
+  //     usersFilteredByDept.lastName.toLowerCase().includes(queryLowercase) ||
+  //     usersFilteredByDept.position.toLowerCase().includes(queryLowercase) ||
+  //     usersFilteredByDept.userTag.toLowerCase().includes(queryLowercase)
+  //   ) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
+
+  //--------------------
 
   const filteredUsers = users
     .filter((user) => {
@@ -45,6 +70,12 @@ export default function Main({ isLoading, users, error }) {
       return false;
     });
 
+    // function userNotFound(filteredUsers) {
+    //   if (filteredUsers.length === 0) {
+    //     setUserNotFound(true);
+    //   }
+    // }
+
   return (
     <section className="main">
       <Search
@@ -56,6 +87,8 @@ export default function Main({ isLoading, users, error }) {
       <TopAppBar setDepartment={setDepartment} department={department} />
       <UserList
         users={filteredUsers}
+        // users = {usersFilteredByDeptAndSearchQuery}
+        // userNotFound={userNotFound}
         isLoading={isLoading}
         isDateVisible={sortingMethod === "byDate"}
       />
@@ -67,5 +100,3 @@ export default function Main({ isLoading, users, error }) {
     </section>
   );
 }
-
-//Main: search, Top Appp Bar, UserList. В Main также перенесем 1,2,3
