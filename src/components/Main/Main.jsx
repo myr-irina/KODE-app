@@ -15,7 +15,6 @@ export default function Main({ isLoading, users, error }) {
     setQuery(e.target.value);
   }
 
-
   // const usersFilteredByDept = (user) => {
   //   if (department === null) {
   //     return users;
@@ -70,11 +69,11 @@ export default function Main({ isLoading, users, error }) {
       return false;
     });
 
-    // function userNotFound(filteredUsers) {
-    //   if (filteredUsers.length === 0) {
-    //     setUserNotFound(true);
-    //   }
-    // }
+  // function userNotFound(filteredUsers) {
+  //   if (filteredUsers.length === 0) {
+  //     setUserNotFound(true);
+  //   }
+  // }
 
   return (
     <section className="main">

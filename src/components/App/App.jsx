@@ -4,13 +4,13 @@ import api from "../../utils/Api";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
-import Preloader from "../Preloader/Preloader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState();
   const [users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [errorMessage, setErrorMessage] = React.useState(true);
 
   // 4. список пользователей
   // 5. isLoading(true) загружаются ли данные
@@ -21,13 +21,13 @@ function App() {
       .getUsers()
       .then((data) => {
         setIsLoading(false);
-        setError(false);
+        setErrorMessage(true);
         setUsers(data.items);
       })
       .catch((err) => {
         console.log("Невозможно получить данные с сервера", err);
         setIsLoading(false);
-        setError(err);
+        setErrorMessage(true);
         setUsers([]);
       });
   }, []);
@@ -36,16 +36,16 @@ function App() {
     <div className="page">
       <div className="page__container">
         <Switch>
-          <Route>
-            <Main error={error} isLoading={isLoading} users={users} />
+          <Route exact path="/">
+            <Main error={errorMessage} isLoading={isLoading} users={users} />
           </Route>
 
           <Route>
-            <UserCard user={currentUser} />
+            <UserCard user={currentUser} path="/user"/>
           </Route>
 
           <Route>
-            <Preloader path="/preloader" />
+            <ErrorMessage path="/err" />
           </Route>
         </Switch>
       </div>
