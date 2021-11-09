@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./UserCard.css";
 import BirthDateIcon from "./../../images/favorite-min.png";
 import PhoneIcon from "./../../images/phone-alt-min.png";
@@ -8,6 +8,8 @@ import UserAvatar from "./../../images/Avatar-min.png";
 
 export default function UserCard(props) {
   const history = useHistory();
+  const { userId } = useParams();
+  const user = props.users.find(user => user.id === userId);
 
   function handleClick() {
     history.goBack();
@@ -28,7 +30,7 @@ export default function UserCard(props) {
             alt="аватар пользователя"
           />
           <div className="user__name-block">
-            <p className="user__name">Алиса</p>
+            <p className="user__name">{user.firstName}</p>
             <p className="user__surname">Иванова</p>
             <p className="user__tag">al</p>
           </div>

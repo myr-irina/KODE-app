@@ -49,13 +49,7 @@ export default function CardList({
                 setCurrentUser={setCurrentUser}
               />
             ))
-            // .sort(function (a, b) {
-            //   const nameA = a.user.firstName.toLowerCase();
-            //   const nameB = b.user.firstName.toLowerCase();
-            //   if (nameA < nameB) return -1;
-            //   if (nameA > nameB) return 1;
-            //   return 0;
-            // })
+         
           }
         </ul>
       )}

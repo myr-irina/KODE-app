@@ -29,7 +29,12 @@ function App() {
       .then((data) => {
         setIsLoading(false);
         setError(false);
-        setUsers(data.items);
+        setUsers(
+          data.items.map((user) => ({
+            ...user,
+            birthdayDate: new Date(user.birthday),
+          }))
+        );
       })
       .catch((err) => {
         if (err === "500" || err === "404") {
@@ -60,18 +65,9 @@ function App() {
             />
           </Route>
 
-          {/* <Route>
-            <UserCard
-              user={selectedUser !== null && selectedUser}
-              path="/user"
-            />
-          </Route> */}
-
-          <Route
-            component={UserCard}
-            user={selectedUser !== null && selectedUser}
-            path="/user"
-          />
+          <Route path="/user/:userId">
+            <UserCard users={users}/>
+          </Route>
         </Switch>
       </div>
     </div>

@@ -4,13 +4,18 @@ import UserList from "../CardList/CardList";
 import TopAppBar from "../NavBar/NavBar";
 import SortPopup from "../SortPopup/SortPopup";
 
+function compareUserNames(a, b) {
+  return a.firstName.localeCompare(b.firstName, "ru");
+}
+
+function compareDates(a, b) {
+  return a.birthdayDate.valueOf() - b.birthdayDate.valueOf();
+}
+
 export default function Main({ isLoading, users, error, onUserClick }) {
   const [query, setQuery] = React.useState("");
   const [department, setDepartment] = React.useState(null);
-  const [sortingMethod, setSortingMethod] = React.useState({
-    byName: true,
-    byDate: false,
-  });
+  const [sortingMethod, setSortingMethod] = React.useState("byName");
   const [isVisible, setIsVisible] = React.useState(false);
   const [userNotFound, setUserNotFound] = React.useState(false);
 
@@ -68,6 +73,10 @@ export default function Main({ isLoading, users, error, onUserClick }) {
       return false;
     });
 
+  const sortedFilteredUsers = filteredUsers.sort(
+    sortingMethod === "byDate" ? compareDates : compareUserNames
+  );
+
   // function userNotFound(filteredUsers) {
   //   if (filteredUsers.length === 0) {
   //     setUserNotFound(true);
@@ -86,7 +95,7 @@ export default function Main({ isLoading, users, error, onUserClick }) {
       <TopAppBar setDepartment={setDepartment} department={department} />
       <UserList
         error={error}
-        users={filteredUsers}
+        users={sortedFilteredUsers}
         // users = {usersFilteredByDeptAndSearchQuery}
         // userNotFound={userNotFound}
         isLoading={isLoading}
@@ -99,7 +108,6 @@ export default function Main({ isLoading, users, error, onUserClick }) {
         sortingMethod={sortingMethod}
         setIsVisible={setIsVisible}
         setSortingMethod={setSortingMethod}
-        users={filteredUsers}
       />
     </section>
   );

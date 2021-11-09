@@ -11,7 +11,7 @@ export default function Card(props) {
   return (
     <section className="card page__content">
       <button className="card__btn" type="button">
-        <Link to="/user">
+        <Link to={`/user/${props.user.id}`}>
           <img
             className="card__avatar"
             src={props.user.avatarUrl}
@@ -26,7 +26,7 @@ export default function Card(props) {
           <p className="card-block__nickname">{props.user.userTag}</p>
         </div>
         <p className="card-block__role">{props.user.position}</p>
-        {/* props.isDateVisible */}
+        {props.isDateVisible && ( <p className="">{props.user.birthday}</p>)}
       </div>
     </section>
   );

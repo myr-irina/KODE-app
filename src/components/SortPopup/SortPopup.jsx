@@ -3,9 +3,9 @@ import "./SortPopup.css";
 
 export default function SortPopup({
   isVisible,
-  // sortingMethod,
+  sortingMethod,
   setIsVisible,
-  // setSortingMethod,
+  setSortingMethod,
   users,
 }) {
   const [checked, setChecked] = React.useState(false);
@@ -13,13 +13,26 @@ export default function SortPopup({
     setIsVisible(false);
   }
 
-  function toggleInputValue(value){
-    return !value;
+  function toggleState() {
+    setChecked(!checked);
   }
 
-  function handleInputChange() {
-    setChecked(toggleInputValue);
+  function handleInputChange(event) {
+    setSortingMethod(event.target.id);
+
+    closePopup();
   }
+
+  // function handleInputChange(event) {
+  //   const target = event.target;
+  //   const value = target.type === 'radio' ? target.checked : target.value;
+  //   const name = target.name;
+
+  //   setSortingMethod({
+  //     [name]: value
+  //   });
+  //   // closePopup();
+  // }
 
   return (
     <div className={`popup ${isVisible ? "popup_is-opened" : ""}`}>
@@ -30,14 +43,13 @@ export default function SortPopup({
         <div className="radio-btn-block">
           <div className="radio-btn-block__input">
             <input
-              checked={checked}
               type="radio"
               name="userData"
               id="byName"
-              value="byName"
+              checked={sortingMethod === "byName"}
               className="radio-btn-block__btn"
               onChange={handleInputChange}
-            ></input>
+            />
             <label htmlFor="byName" className="radio-btn-block__label">
               По алфавиту
             </label>
@@ -45,14 +57,13 @@ export default function SortPopup({
 
           <div className="radio-btn-block__input">
             <input
-              // checked={checked}
               type="radio"
               name="userData"
               id="byDate"
-              value="byDate"
+              checked={sortingMethod === "byDate"}
               className="radio-btn-block__btn"
               onChange={handleInputChange}
-            ></input>
+            />
             <label htmlFor="byDate" className="radio-btn-block__label">
               По дню рождения
             </label>
