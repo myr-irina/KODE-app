@@ -4,13 +4,20 @@ import api from "../../utils/Api";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState();
+  const [selectedUser, setSelectedUser] = React.useState({
+    avatarUrl: "",
+    firstName: "",
+    lastName: "",
+    userTag: "",
+    position: "",
+    birthday: "",
+    phone: "",
+  });
   const [users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [errorMessage, setErrorMessage] = React.useState(true);
+  const [error, setError] = React.useState(false);
 
   // 4. список пользователей
   // 5. isLoading(true) загружаются ли данные
@@ -21,32 +28,50 @@ function App() {
       .getUsers()
       .then((data) => {
         setIsLoading(false);
-        setErrorMessage(true);
+        setError(false);
         setUsers(data.items);
       })
       .catch((err) => {
+        if (err === "500" || err === "404") {
+          setError(true);
+          setIsLoading(false);
+          setUsers([]);
+        }
         console.log("Невозможно получить данные с сервера", err);
         setIsLoading(false);
-        setErrorMessage(true);
         setUsers([]);
       });
   }, []);
+
+  function onUserClick(user) {
+    setSelectedUser(user);
+  }
 
   return (
     <div className="page">
       <div className="page__container">
         <Switch>
           <Route exact path="/">
-            <Main error={errorMessage} isLoading={isLoading} users={users} />
+            <Main
+              error={error}
+              isLoading={isLoading}
+              users={users}
+              onUserClick={onUserClick}
+            />
           </Route>
 
-          <Route>
-            <UserCard user={currentUser} path="/user"/>
-          </Route>
+          {/* <Route>
+            <UserCard
+              user={selectedUser !== null && selectedUser}
+              path="/user"
+            />
+          </Route> */}
 
-          <Route>
-            <ErrorMessage path="/err" />
-          </Route>
+          <Route
+            component={UserCard}
+            user={selectedUser !== null && selectedUser}
+            path="/user"
+          />
         </Switch>
       </div>
     </div>

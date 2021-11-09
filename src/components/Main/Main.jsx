@@ -4,16 +4,15 @@ import UserList from "../CardList/CardList";
 import TopAppBar from "../NavBar/NavBar";
 import SortPopup from "../SortPopup/SortPopup";
 
-export default function Main({ isLoading, users, error }) {
+export default function Main({ isLoading, users, error, onUserClick }) {
   const [query, setQuery] = React.useState("");
   const [department, setDepartment] = React.useState(null);
-  const [sortingMethod, setSortingMethod] = React.useState("byName");
+  const [sortingMethod, setSortingMethod] = React.useState({
+    byName: true,
+    byDate: false,
+  });
   const [isVisible, setIsVisible] = React.useState(false);
   const [userNotFound, setUserNotFound] = React.useState(false);
-
-  function onChange(e) {
-    setQuery(e.target.value);
-  }
 
   // const usersFilteredByDept = (user) => {
   //   if (department === null) {
@@ -79,22 +78,28 @@ export default function Main({ isLoading, users, error }) {
     <section className="main">
       <Search
         query={query}
-        handleChange={onChange}
+        // handleChange={onChange}
         isVisible={isVisible}
         setIsVisible={setIsVisible}
+        setQuery={setQuery}
       />
       <TopAppBar setDepartment={setDepartment} department={department} />
       <UserList
+        error={error}
         users={filteredUsers}
         // users = {usersFilteredByDeptAndSearchQuery}
         // userNotFound={userNotFound}
         isLoading={isLoading}
         isDateVisible={sortingMethod === "byDate"}
+        onUserClick={onUserClick}
       />
+
       <SortPopup
         isVisible={isVisible}
         sortingMethod={sortingMethod}
         setIsVisible={setIsVisible}
+        setSortingMethod={setSortingMethod}
+        users={filteredUsers}
       />
     </section>
   );

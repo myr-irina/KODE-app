@@ -8,10 +8,15 @@ export default function Search({
   onPopupOpen,
   isVisisble,
   setIsVisible,
+  setQuery,
 }) {
   function handlePopupOpen(e) {
     e.preventDefault();
     setIsVisible(true);
+  }
+
+  function onChange(e) {
+    setQuery(e.target.value);
   }
 
   return (
@@ -23,7 +28,7 @@ export default function Search({
           <input
             className="search__input"
             value={query}
-            onChange={handleChange}
+            onChange={onChange}
             type="text"
             placeholder="Введи имя, тег, почту..."
             autoComplete="off"

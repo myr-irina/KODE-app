@@ -1,5 +1,7 @@
 const API =
   "https://stoplight.io/mocks/kode-education/trainee-test/25143926/users";
+  // const API =
+  // "https://stoplight.io/mocks/kode-education/trainee-test/25143926/user";
 
 class Api {
   constructor(options) {
