@@ -1,7 +1,5 @@
 const API =
   "https://stoplight.io/mocks/kode-education/trainee-test/25143926/users";
-  // const API =
-  // "https://stoplight.io/mocks/kode-education/trainee-test/25143926/user";
 
 class Api {
   constructor(options) {
@@ -12,7 +10,7 @@ class Api {
   getUsers() {
     return fetch(`${this._url}`, {
       method: "GET",
-      headers: this._headers, 
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -26,7 +24,7 @@ const api = new Api({
   url: API,
   headers: {
     "Content-Type": "application/json",
-    "Prefer": "code=200, example=success",
+    Prefer: "code=200, example=success",
   },
 });
 
