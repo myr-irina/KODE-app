@@ -48,6 +48,7 @@
   width: 104px;
   height: 104px;
   margin: 72px 0 24px;
+  border-radius: 50%;
 }
 
 .user__name {
@@ -130,4 +131,18 @@
 .user__phone {
   text-decoration: none;
   color: #050510;
+}
+
+@media screen and (max-width: 768px) {
+  .user__data {
+    font-size: 14px;
+  }
+
+  .user__phone {
+    font-size: 14px;
+  }
+
+  .user__data-short {
+    font-size: 14px;
+  }
 }

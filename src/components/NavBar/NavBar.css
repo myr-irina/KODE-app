@@ -4,9 +4,8 @@
   justify-content: flex-start;
   align-items: center;
   list-style: none;
-  /* margin: 0 auto;
-  padding: 0 0 8px; */
   padding: 0;
+  margin: 0;
 }
 
 .menu__link {
@@ -19,15 +18,31 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+  padding: 0;
 }
 
 .menu__link_active {
   color: #050510;
   font-weight: 600;
-  border-bottom: 2px solid #6534FF;
+  border-bottom: 2px solid #6534ff;
   padding-bottom: 8px;
 }
 
 .line {
   border-bottom: 0.33px #c3c3c6 solid;
+}
+
+@media screen and (max-width: 768px) {
+  .menu__link {
+    margin-right: 15px;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 432px) {
+  .menu__orientation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 12px;
+  }
 }

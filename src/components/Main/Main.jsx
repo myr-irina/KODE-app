@@ -17,7 +17,6 @@ export default function Main({ isLoading, users, error, onUserClick }) {
   const [department, setDepartment] = React.useState(null);
   const [sortingMethod, setSortingMethod] = React.useState("byName");
   const [isVisible, setIsVisible] = React.useState(false);
-  const [userNotFound, setUserNotFound] = React.useState(false);
 
   // const usersFilteredByDept = (user) => {
   //   if (department === null) {
@@ -77,17 +76,10 @@ export default function Main({ isLoading, users, error, onUserClick }) {
     sortingMethod === "byDate" ? compareDates : compareUserNames
   );
 
-  // function userNotFound(filteredUsers) {
-  //   if (filteredUsers.length === 0) {
-  //     setUserNotFound(true);
-  //   }
-  // }
-
   return (
     <section className="main">
       <Search
         query={query}
-        // handleChange={onChange}
         isVisible={isVisible}
         setIsVisible={setIsVisible}
         setQuery={setQuery}
@@ -96,8 +88,6 @@ export default function Main({ isLoading, users, error, onUserClick }) {
       <UserList
         error={error}
         users={sortedFilteredUsers}
-        // users = {usersFilteredByDeptAndSearchQuery}
-        // userNotFound={userNotFound}
         isLoading={isLoading}
         isDateVisible={sortingMethod === "byDate"}
         onUserClick={onUserClick}

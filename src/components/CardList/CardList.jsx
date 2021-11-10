@@ -3,6 +3,7 @@ import "./CardList.css";
 import Card from "../Card/Card";
 import Preloader from "../Preloader/Preloader";
 import Error from "./../ErrorMessage/ErrorMessage";
+import UserNotFound from "../UserNotFound/UserNotFound";
 
 export default function CardList({
   users,
@@ -12,27 +13,6 @@ export default function CardList({
   error,
 }) {
   return (
-    // <div className="cardlist">
-    //   {isLoading ? (
-    //     <Preloader />
-    //   ) : (
-    //     <ul className="cards__list">
-    //       {users
-    //         .map((user) => (
-    //           <Card key={user.id} user={user} isDateVisible={isDateVisible} setCurrentUser={setCurrentUser} />
-    //         ))
-    //         // .sort(function (a, b) {
-    //         //   const nameA = a.user.firstName.toLowerCase();
-    //         //   const nameB = b.user.firstName.toLowerCase();
-    //         //   if (nameA < nameB) return -1;
-    //         //   if (nameA > nameB) return 1;
-    //         //   return 0;
-    //         // })
-    //         }
-    //     </ul>
-    //   )}
-    // </div>
-
     <div className="cardlist">
       {error ? (
         <Error />
@@ -40,17 +20,15 @@ export default function CardList({
         <Preloader />
       ) : (
         <ul className="cards__list">
-          {
-            users.map((user) => (
-              <Card
-                key={user.id}
-                user={user}
-                isDateVisible={isDateVisible}
-                setCurrentUser={setCurrentUser}
-              />
-            ))
-         
-          }
+          {users.length === 0 && <UserNotFound />}
+          {users.map((user) => (
+            <Card
+              key={user.id}
+              user={user}
+              isDateVisible={isDateVisible}
+              setCurrentUser={setCurrentUser}
+            />
+          ))}
         </ul>
       )}
     </div>

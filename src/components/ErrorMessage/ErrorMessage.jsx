@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./ErrorMessage.css";
 import Emoji from "./../../images/flying-saucer_1f6f8.png";
 

@@ -6,22 +6,9 @@ import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
 
 function App() {
-  const [selectedUser, setSelectedUser] = React.useState({
-    avatarUrl: "",
-    firstName: "",
-    lastName: "",
-    userTag: "",
-    position: "",
-    birthday: "",
-    phone: "",
-  });
   const [users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
-
-  // 4. список пользователей
-  // 5. isLoading(true) загружаются ли данные
-  // 6. ошибка, которую вернул сервер
 
   React.useEffect(() => {
     api
@@ -48,25 +35,16 @@ function App() {
       });
   }, []);
 
-  function onUserClick(user) {
-    setSelectedUser(user);
-  }
-
   return (
     <div className="page">
       <div className="page__container">
         <Switch>
           <Route exact path="/">
-            <Main
-              error={error}
-              isLoading={isLoading}
-              users={users}
-              onUserClick={onUserClick}
-            />
+            <Main error={error} isLoading={isLoading} users={users} />
           </Route>
 
           <Route path="/user/:userId">
-            <UserCard users={users}/>
+            <UserCard users={users} />
           </Route>
         </Switch>
       </div>

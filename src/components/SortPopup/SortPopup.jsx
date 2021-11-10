@@ -6,15 +6,9 @@ export default function SortPopup({
   sortingMethod,
   setIsVisible,
   setSortingMethod,
-  users,
 }) {
-  const [checked, setChecked] = React.useState(false);
   function closePopup() {
     setIsVisible(false);
-  }
-
-  function toggleState() {
-    setChecked(!checked);
   }
 
   function handleInputChange(event) {
@@ -22,17 +16,6 @@ export default function SortPopup({
 
     closePopup();
   }
-
-  // function handleInputChange(event) {
-  //   const target = event.target;
-  //   const value = target.type === 'radio' ? target.checked : target.value;
-  //   const name = target.name;
-
-  //   setSortingMethod({
-  //     [name]: value
-  //   });
-  //   // closePopup();
-  // }
 
   return (
     <div className={`popup ${isVisible ? "popup_is-opened" : ""}`}>

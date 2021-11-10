@@ -4,10 +4,6 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 
 export default function Card(props) {
-  // function handleClick() {
-  //   props.onCardClick(props.user);
-  // }
-
   return (
     <section className="card page__content">
       <button className="card__btn" type="button">
@@ -19,14 +15,18 @@ export default function Card(props) {
           />
         </Link>
       </button>
-      <div className="card-block">
-        <div className="card-block__name-details">
-          <p className="card-block__name">{props.user.firstName}</p>
-          <p className="card-block__surname">{props.user.lastName}</p>
-          <p className="card-block__nickname">{props.user.userTag}</p>
+      <div className="card__wrapper">
+        <div className="card-block">
+          <div className="card-block__name-details">
+            <p className="card-block__name">{props.user.firstName}</p>
+            <p className="card-block__surname">{props.user.lastName}</p>
+            <p className="card-block__nickname">{props.user.userTag}</p>
+          </div>
+          <p className="card-block__role">{props.user.position}</p>
         </div>
-        <p className="card-block__role">{props.user.position}</p>
-        {props.isDateVisible && ( <p className="">{props.user.birthday}</p>)}
+        {props.isDateVisible && (
+          <p className="card-block__age">{props.user.birthday}</p>
+        )}
       </div>
     </section>
   );

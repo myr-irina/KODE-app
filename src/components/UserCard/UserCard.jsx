@@ -4,12 +4,10 @@ import "./UserCard.css";
 import BirthDateIcon from "./../../images/favorite-min.png";
 import PhoneIcon from "./../../images/phone-alt-min.png";
 
-import UserAvatar from "./../../images/Avatar-min.png";
-
 export default function UserCard(props) {
   const history = useHistory();
   const { userId } = useParams();
-  const user = props.users.find(user => user.id === userId);
+  const user = props.users.find((user) => user.id === userId);
 
   function handleClick() {
     history.goBack();
@@ -26,15 +24,15 @@ export default function UserCard(props) {
           ></button>
           <img
             className="user__avatar"
-            src={UserAvatar}
+            src={user.avatarUrl}
             alt="аватар пользователя"
           />
           <div className="user__name-block">
             <p className="user__name">{user.firstName}</p>
-            <p className="user__surname">Иванова</p>
-            <p className="user__tag">al</p>
+            <p className="user__surname">{user.lastName}</p>
+            <p className="user__tag">{user.userTag}</p>
           </div>
-          <p className="user__position">Designer</p>
+          <p className="user__position">{user.position}</p>
         </article>
       </div>
       <div className="user__info">
@@ -45,7 +43,7 @@ export default function UserCard(props) {
             alt="иконка избранное"
           />
           <div className="user-data__block">
-            <p className="user__data">5 июня 1996</p>
+            <p className="user__data">{user.birthday}</p>
             <p className="user__data-short">24 года</p>
           </div>
         </div>
@@ -53,7 +51,7 @@ export default function UserCard(props) {
           <img className="user-icon" src={PhoneIcon} alt=" телефона" />
           <span className="user__data">
             <a className="user__phone" href="tel:79999009090">
-              +7 (999) 900 90 90
+              {user.phone}
             </a>
           </span>
         </div>
