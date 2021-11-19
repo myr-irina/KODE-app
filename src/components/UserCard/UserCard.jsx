@@ -8,6 +8,10 @@ export default function UserCard(props) {
   const history = useHistory();
   const { userId } = useParams();
   const user = props.users.find((user) => user.id === userId);
+  const phoneNumber = user.phone;
+  const formattedPhoneNumber = phoneNumber
+    .replace(/[^\d]/g, "")
+    .replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "+7 ($1) $2 $3 $4");
 
   function handleClick() {
     history.goBack();
@@ -51,7 +55,8 @@ export default function UserCard(props) {
           <img className="user-icon" src={PhoneIcon} alt=" телефона" />
           <span className="user__data">
             <a className="user__phone" href="tel:79999009090">
-              {user.phone}
+              {/* {user.phone} */}
+              {formattedPhoneNumber}
             </a>
           </span>
         </div>
