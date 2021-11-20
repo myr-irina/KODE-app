@@ -50,7 +50,7 @@ export default function UserCard(props) {
           />
           <div className="user-data__block">
             <p className="user__data">{moment(user.birthday).format("LL")}</p>
-            <p className="user__data-short">24 года</p>
+            <p className="user__data-short">{moment(user.birthday).fromNow(true)}</p>
           </div>
         </div>
         <div className="user__info-block">
