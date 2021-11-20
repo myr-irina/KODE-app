@@ -9,7 +9,7 @@ function compareUserNames(a, b) {
 }
 
 function compareDates(a, b) {
-  return a.birthdayDate.valueOf() - b.birthdayDate.valueOf();
+  return b.birthdayDate.valueOf() - a.birthdayDate.valueOf();
 }
 
 export default function Main({ isLoading, users, error, onUserClick }) {
@@ -17,35 +17,6 @@ export default function Main({ isLoading, users, error, onUserClick }) {
   const [department, setDepartment] = React.useState(null);
   const [sortingMethod, setSortingMethod] = React.useState("byName");
   const [isVisible, setIsVisible] = React.useState(false);
-
-  // const usersFilteredByDept = (user) => {
-  //   if (department === null) {
-  //     return users;
-  //   } else if (department === user.department) {
-  //     users.filter((user) => {
-  //       return true;
-  //     });
-  //     return false;
-  //   }
-  // };
-
-  // const usersFilteredByDeptAndSearchQuery = () => {
-  //   const queryLowercase = query.toLowerCase();
-
-  //   if (query === "") {
-  //     return usersFilteredByDept;
-  //   } else if (
-  //     usersFilteredByDept.firstName.toLowerCase().includes(queryLowercase) ||
-  //     usersFilteredByDept.lastName.toLowerCase().includes(queryLowercase) ||
-  //     usersFilteredByDept.position.toLowerCase().includes(queryLowercase) ||
-  //     usersFilteredByDept.userTag.toLowerCase().includes(queryLowercase)
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
-  //--------------------
 
   const filteredUsers = users
     .filter((user) => {

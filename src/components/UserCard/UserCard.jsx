@@ -50,14 +50,15 @@ export default function UserCard(props) {
           />
           <div className="user-data__block">
             <p className="user__data">{moment(user.birthday).format("LL")}</p>
-            <p className="user__data-short">{moment(user.birthday).fromNow(true)}</p>
+            <p className="user__data-short">
+              {moment(user.birthday).fromNow(true)}
+            </p>
           </div>
         </div>
         <div className="user__info-block">
           <img className="user-icon" src={PhoneIcon} alt=" телефона" />
           <span className="user__data">
             <a className="user__phone" href="tel:79999009090">
-              {/* {user.phone} */}
               {formattedPhoneNumber}
             </a>
           </span>
