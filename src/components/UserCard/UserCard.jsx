@@ -3,6 +3,8 @@ import { useHistory, useParams } from "react-router-dom";
 import "./UserCard.css";
 import BirthDateIcon from "./../../images/favorite-min.png";
 import PhoneIcon from "./../../images/phone-alt-min.png";
+import moment from "moment";
+import "moment/locale/ru";
 
 export default function UserCard(props) {
   const history = useHistory();
@@ -47,7 +49,7 @@ export default function UserCard(props) {
             alt="иконка избранное"
           />
           <div className="user-data__block">
-            <p className="user__data">{user.birthday}</p>
+            <p className="user__data">{moment(user.birthday).format("LL")}</p>
             <p className="user__data-short">24 года</p>
           </div>
         </div>

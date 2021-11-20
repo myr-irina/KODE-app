@@ -65,10 +65,11 @@
   padding: 0;
   line-height: 1.23;
   font-size: 1.08em;
+  color: #55555C;
 }
 
 .card-block__age {
-  font-size: 1.25;
+  font-size: 15px;
   line-height: 1.33;
   color: #55555c;
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import "./Card.css";
+import moment from "moment";
+import "moment/locale/ru";
 
 import { Link } from "react-router-dom";
 
@@ -25,7 +27,7 @@ export default function Card(props) {
           <p className="card-block__role">{props.user.position}</p>
         </div>
         {props.isDateVisible && (
-          <p className="card-block__age">{props.user.birthday}</p>
+          <p className="card-block__age">{moment(props.user.birthday).format('DD MMM')}</p>
         )}
       </div>
     </section>
