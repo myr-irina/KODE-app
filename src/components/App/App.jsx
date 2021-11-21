@@ -4,6 +4,7 @@ import api from "../../utils/Api";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
+import axios from "axios";
 
 function App() {
   const [users, setUsers] = React.useState([]);
@@ -11,20 +12,27 @@ function App() {
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    api
-      .getUsers()
+    axios({
+      method: "GET",
+      url: "https://stoplight.io/mocks/kode-education/trainee-test/25143926/users",
+      headers: {
+        "Content-Type": "application/json",
+        Prefer: "code=200, example=success",
+      },
+    })
       .then((data) => {
+        console.log(data);
         setIsLoading(false);
         setError(false);
         setUsers(
-          data.items.map((user) => ({
+          data.data.items.map((user) => ({
             ...user,
             birthdayDate: new Date(user.birthday),
           }))
         );
       })
       .catch((err) => {
-        if (err === "500" || err === "404") {
+        if (err === "404" || err === "500") {
           setError(true);
           setIsLoading(false);
           setUsers([]);
@@ -44,7 +52,7 @@ function App() {
           </Route>
 
           <Route path="/user/:userId">
-            <UserCard users={users} />
+            <UserCard isLoading={isLoading} users={users} />
           </Route>
         </Switch>
       </div>

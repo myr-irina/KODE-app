@@ -3,13 +3,15 @@ import Search from "../Search/Search";
 import UserList from "../CardList/CardList";
 import TopAppBar from "../NavBar/NavBar";
 import SortPopup from "../SortPopup/SortPopup";
+import moment from "moment";
+import "moment/locale/ru";
 
 function compareUserNames(a, b) {
   return a.firstName.localeCompare(b.firstName, "ru");
 }
 
-function compareDates(a, b) {
-  return b.birthdayDate.valueOf() - a.birthdayDate.valueOf();
+function compareUserGroupsByDate(a, b) {
+  return +b[0] - +a[0];
 }
 
 export default function Main({ isLoading, users, error, onUserClick }) {
@@ -43,9 +45,45 @@ export default function Main({ isLoading, users, error, onUserClick }) {
       return false;
     });
 
-  const sortedFilteredUsers = filteredUsers.sort(
-    sortingMethod === "byDate" ? compareDates : compareUserNames
-  );
+  let listToRender;
+
+  if (sortingMethod === "byName") {
+    const sortedFilteredUsers = filteredUsers.sort(compareUserNames);
+    listToRender = (
+      <UserList
+        error={error}
+        users={sortedFilteredUsers}
+        isLoading={isLoading}
+        isDateVisible={false}
+        onUserClick={onUserClick}
+      />
+    );
+  } else {
+    const grouppedUsers = Object.entries(
+      filteredUsers.reduce((accumulator, currentValue) => {
+        const year = moment(currentValue.birthdayDate).format("YYYY");
+        accumulator[year] = [...(accumulator[year] || []), currentValue];
+        return accumulator;
+      }, {})
+    );
+    const sortedGrouppedUsers = grouppedUsers.sort(compareUserGroupsByDate);
+    listToRender = sortedGrouppedUsers.map(([currentDate, currentUsers]) => {
+      return (
+        <React.Fragment key={currentDate}>
+          <UserList
+            error={error}
+            users={currentUsers}
+            isLoading={isLoading}
+            isDateVisible={true}
+            onUserClick={onUserClick}
+          />
+          <p className="underline__age">{currentDate}</p>
+        </React.Fragment>
+      );
+    });
+  }
+
+  // console.log(result);
 
   return (
     <section className="main">
@@ -56,13 +94,7 @@ export default function Main({ isLoading, users, error, onUserClick }) {
         setQuery={setQuery}
       />
       <TopAppBar setDepartment={setDepartment} department={department} />
-      <UserList
-        error={error}
-        users={sortedFilteredUsers}
-        isLoading={isLoading}
-        isDateVisible={sortingMethod === "byDate"}
-        onUserClick={onUserClick}
-      />
+      {listToRender}
 
       <SortPopup
         isVisible={isVisible}

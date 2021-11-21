@@ -5,11 +5,19 @@ import BirthDateIcon from "./../../images/favorite-min.png";
 import PhoneIcon from "./../../images/phone-alt-min.png";
 import moment from "moment";
 import "moment/locale/ru";
+import PreloaderCard from "../PreloaderCard/PreloaderCard";
 
 export default function UserCard(props) {
   const history = useHistory();
   const { userId } = useParams();
+  if (props.isLoading) {
+    return <PreloaderCard />;
+  }
   const user = props.users.find((user) => user.id === userId);
+  if (!user) {
+    return <p>Нет такого пользователя</p>;
+  }
+
   const phoneNumber = user.phone;
   const formattedPhoneNumber = phoneNumber
     .replace(/[^\d]/g, "")
