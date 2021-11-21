@@ -3,10 +3,7 @@ import "./Search.css";
 import SearchIcon from "./../../images/search.svg";
 
 export default function Search({
-  query,
-  handleChange,
-  onPopupOpen,
-  isVisisble,
+  query, 
   setIsVisible,
   setQuery,
 }) {

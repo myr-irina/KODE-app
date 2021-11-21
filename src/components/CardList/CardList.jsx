@@ -12,7 +12,7 @@ export default function CardList({
   isDateVisible,
   isLoading,
   setCurrentUser,
-  error 
+  error,
 }) {
   return (
     <div className="cardlist">
@@ -23,10 +23,6 @@ export default function CardList({
       ) : (
         <ul className="cards__list">
           {users.length === 0 && <UserNotFound />}
-          {/* {isDateVisible &&
-            result.map((res) => {
-              <Card key={res.id} birthdayDate={res.birthdayDate} />;
-            }) && <p className="underline__age">{moment(users.birthday).format('YYYY')}</p>} */}
           {users.map((user) => (
             <Card
               key={user.id}

@@ -6,6 +6,7 @@ import PhoneIcon from "./../../images/phone-alt-min.png";
 import moment from "moment";
 import "moment/locale/ru";
 import PreloaderCard from "../PreloaderCard/PreloaderCard";
+import UserNotFound from "../UserNotFound/UserNotFound";
 
 export default function UserCard(props) {
   const history = useHistory();
@@ -15,7 +16,7 @@ export default function UserCard(props) {
   }
   const user = props.users.find((user) => user.id === userId);
   if (!user) {
-    return <p>Нет такого пользователя</p>;
+    return <UserNotFound />;
   }
 
   const phoneNumber = user.phone;

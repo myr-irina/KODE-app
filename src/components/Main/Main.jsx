@@ -83,8 +83,6 @@ export default function Main({ isLoading, users, error, onUserClick }) {
     });
   }
 
-  // console.log(result);
-
   return (
     <section className="main">
       <Search

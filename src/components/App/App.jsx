@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import api from "../../utils/Api";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
 import { Route, Switch } from "react-router";
