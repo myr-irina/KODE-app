@@ -3,6 +3,7 @@ import Search from "../Search/Search";
 import UserList from "../CardList/CardList";
 import TopAppBar from "../NavBar/NavBar";
 import SortPopup from "../SortPopup/SortPopup";
+import "./Main.css";
 import moment from "moment";
 import "moment/locale/ru";
 
@@ -77,7 +78,11 @@ export default function Main({ isLoading, users, error, onUserClick }) {
             isDateVisible={true}
             onUserClick={onUserClick}
           />
-          <p className="underline__age">{currentDate}</p>
+          <div className="underline page__content">
+            <div className="underline__line" />
+            <p className="underline__age">{currentDate}</p>
+            <div className="underline__line" />
+          </div>
         </React.Fragment>
       );
     });
@@ -92,6 +97,7 @@ export default function Main({ isLoading, users, error, onUserClick }) {
         setQuery={setQuery}
       />
       <TopAppBar setDepartment={setDepartment} department={department} />
+
       {listToRender}
 
       <SortPopup

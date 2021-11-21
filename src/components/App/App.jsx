@@ -20,7 +20,6 @@ function App() {
       },
     })
       .then((data) => {
-        console.log(data);
         setIsLoading(false);
         setError(false);
         setUsers(

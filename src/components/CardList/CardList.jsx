@@ -4,9 +4,7 @@ import Card from "../Card/Card";
 import Preloader from "../Preloader/Preloader";
 import Error from "./../ErrorMessage/ErrorMessage";
 import UserNotFound from "../UserNotFound/UserNotFound";
-import moment from "moment";
 
-//компонент, который рисует список карточек
 export default function CardList({
   users,
   isDateVisible,
