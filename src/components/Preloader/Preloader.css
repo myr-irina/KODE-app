@@ -1,9 +1,0 @@
-.preloader__list {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 24px;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 22px auto 0;
-}
