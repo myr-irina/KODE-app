@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 40 px);
+  width: calc(100% - 40px);
 }
 
 .user__block {
