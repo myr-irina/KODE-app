@@ -46,7 +46,7 @@ function App() {
 			<div className='page__container'>
 				<Routes>
 					<Route
-						path='/'
+						path='/KODE-app'
 						element={<Main error={error} isLoading={isLoading} users={users} />}
 					/>
 
