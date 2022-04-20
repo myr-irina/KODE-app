@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import UserCard from "../UserCard/UserCard";
 import Main from "../Main/Main";
-// import { Route, Switch } from "react-router";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -45,7 +44,6 @@ function App() {
 	return (
 		<div className='page'>
 			<div className='page__container'>
-				<div></div>
 				<Routes>
 					<Route
 						path='/'

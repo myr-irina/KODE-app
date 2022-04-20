@@ -1,7 +1,7 @@
 {
 	"name": "kode",
 	"version": "0.1.0",
-	"homepage": "https://myr-irina.github.io/KODE-app",
+	"homepage": "https://myr-irina.github.io/KODE-app/",
 	"private": true,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.15.0",
@@ -13,7 +13,7 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-moment": "^1.1.1",
-		"react-router-dom": "^6.3.0",
+		"react-router-dom": "6",
 		"react-scripts": "4.0.3",
 		"save-dev": "0.0.1-security",
 		"web-vitals": "^1.1.2"
