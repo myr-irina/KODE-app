@@ -1,25 +1,23 @@
 {
   "files": {
     "main.css": "/KODE-app/static/css/main.9b612eff.chunk.css",
-    "main.js": "/KODE-app/static/js/main.8a70f737.chunk.js",
-    "main.js.map": "/KODE-app/static/js/main.8a70f737.chunk.js.map",
-    "runtime-main.js": "/KODE-app/static/js/runtime-main.b65437bc.js",
-    "runtime-main.js.map": "/KODE-app/static/js/runtime-main.b65437bc.js.map",
-    "static/js/2.a96f4bc2.chunk.js": "/KODE-app/static/js/2.a96f4bc2.chunk.js",
-    "static/js/2.a96f4bc2.chunk.js.map": "/KODE-app/static/js/2.a96f4bc2.chunk.js.map",
-    "static/js/3.d27b7a4c.chunk.js": "/KODE-app/static/js/3.d27b7a4c.chunk.js",
-    "static/js/3.d27b7a4c.chunk.js.map": "/KODE-app/static/js/3.d27b7a4c.chunk.js.map",
+    "main.js": "/KODE-app/static/js/main.beb46a62.chunk.js",
+    "main.js.map": "/KODE-app/static/js/main.beb46a62.chunk.js.map",
+    "runtime-main.js": "/KODE-app/static/js/runtime-main.503a87c2.js",
+    "runtime-main.js.map": "/KODE-app/static/js/runtime-main.503a87c2.js.map",
+    "static/js/2.2beb2341.chunk.js": "/KODE-app/static/js/2.2beb2341.chunk.js",
+    "static/js/2.2beb2341.chunk.js.map": "/KODE-app/static/js/2.2beb2341.chunk.js.map",
     "index.html": "/KODE-app/index.html",
     "static/css/main.9b612eff.chunk.css.map": "/KODE-app/static/css/main.9b612eff.chunk.css.map",
-    "static/js/2.a96f4bc2.chunk.js.LICENSE.txt": "/KODE-app/static/js/2.a96f4bc2.chunk.js.LICENSE.txt",
+    "static/js/2.2beb2341.chunk.js.LICENSE.txt": "/KODE-app/static/js/2.2beb2341.chunk.js.LICENSE.txt",
     "static/media/SortPopup.css": "/KODE-app/static/media/close-btn.52dbcbd2.svg",
     "static/media/index.css": "/KODE-app/static/media/Inter-Regular.e148c4a1.woff",
     "static/media/search.cc962da4.svg": "/KODE-app/static/media/search.cc962da4.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b65437bc.js",
-    "static/js/2.a96f4bc2.chunk.js",
+    "static/js/runtime-main.503a87c2.js",
+    "static/js/2.2beb2341.chunk.js",
     "static/css/main.9b612eff.chunk.css",
-    "static/js/main.8a70f737.chunk.js"
+    "static/js/main.beb46a62.chunk.js"
   ]
 }
